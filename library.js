@@ -14,13 +14,19 @@ function addBookToLibrary(title, author, genre) {
     myLibrary.push(new Book(title, author, genre))
 }
 
-addBookToLibrary("Book 1", "Author 1", "Genre 1");
-addBookToLibrary("Book 2", "Author 2", "Genre 2");
-addBookToLibrary("Book 3", "Author 3", "Genre 3");
-
-displayLibrary();
-
 function displayLibrary() {
+    //Create table header and append to table
+    const tableHeaderRow = document.createElement('tr');
+    const tableHeaderTitle = document.createElement('th');
+    const tableHeaderAuthor = document.createElement('th');
+    const tableHeaderGenre = document.createElement('th');
+    tableHeaderTitle.textContent = "Title";
+    tableHeaderAuthor.textContent = "Author";
+    tableHeaderGenre.textContent = "Genre";
+    tableHeaderRow.appendChild(tableHeaderTitle);
+    tableHeaderRow.appendChild(tableHeaderAuthor);
+    tableHeaderRow.appendChild(tableHeaderGenre);
+    libraryTable.appendChild(tableHeaderRow);
     for(i = 0; i < myLibrary.length; i++) {
         //Create table elements and assign the text of the object to them.
         const tableRow = document.createElement('tr');
@@ -36,3 +42,5 @@ function displayLibrary() {
         libraryTable.append(tableRow);
     }
 }
+
+displayLibrary();
