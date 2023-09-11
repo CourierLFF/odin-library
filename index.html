@@ -10,6 +10,15 @@
     <div class="main-container">
         <table class="library-table">
         </table>
+        <form onsubmit="addBookToLibraryFromForm()">
+            <label for="ftitle">Title:</label>
+            <input type="text" id="ftitle" name="ftitle">
+            <label for="fauthor">Author:</label>
+            <input type="text" id="fauthor" name="fauthor">
+            <label for="fgenre">Genre:</label>
+            <input type="text" id="fgenre" name="fgenre">
+            <input type="submit" value="NEW BOOK">
+        </form>
     </div>
 </body>
 <script src="library.js"></script>

@@ -2,6 +2,10 @@ const myLibrary = [];
 
 const libraryTable = document.querySelector(".library-table")
 
+const formTitle = document.querySelector("#ftitle");
+const formAuthor = document.querySelector("#fauthor");
+const formGenre = document.querySelector("#fgenre");
+
 class Book {
     constructor(title, author, genre) {
         this.title = title;
@@ -14,7 +18,22 @@ function addBookToLibrary(title, author, genre) {
     myLibrary.push(new Book(title, author, genre))
 }
 
+function addBookToLibraryFromForm() {
+    event.preventDefault();
+    if(formTitle.value != "" && formAuthor.value != "" && formGenre.value != "") {
+        addBookToLibrary(formTitle.value, formAuthor.value, formGenre.value);
+        displayLibrary();
+    }
+}
+
+function clearDisplay() {
+    while (libraryTable.firstChild) {
+        libraryTable.removeChild(libraryTable.firstChild);
+    }
+}
+
 function displayLibrary() {
+    clearDisplay()
     //Create table header and append to table
     const tableHeaderRow = document.createElement('tr');
     const tableHeaderTitle = document.createElement('th');
