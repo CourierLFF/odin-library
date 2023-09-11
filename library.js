@@ -52,14 +52,29 @@ function displayLibrary() {
         const tableTitle = document.createElement('td');
         const tableAuthor = document.createElement('td');
         const tableGenre = document.createElement('td');
+        const removeButton = document.createElement('button');
+        removeButton.setAttribute("onclick", "removeBook()");
         tableTitle.textContent = myLibrary[i].title;
         tableAuthor.textContent = myLibrary[i].author;
         tableGenre.textContent = myLibrary[i].genre;
+        removeButton.textContent = "REMOVE";
         tableRow.appendChild(tableTitle);
         tableRow.appendChild(tableAuthor);
         tableRow.appendChild(tableGenre);
+        tableRow.appendChild(removeButton);
         libraryTable.append(tableRow);
     }
 }
 
 displayLibrary();
+
+function removeBook() {
+    //event.target.parentNode.remove();
+    let removeBookTitle = event.target.parentNode.firstChild.textContent;
+    for(i = 0; i < myLibrary.length; i++) {
+        if(removeBookTitle == myLibrary[i].title) {
+            myLibrary.splice(i, 1);
+        }
+    }
+    displayLibrary();
+}
