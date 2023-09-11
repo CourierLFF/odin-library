@@ -15,7 +15,16 @@ class Book {
 }
 
 function addBookToLibrary(title, author, genre) {
-    myLibrary.push(new Book(title, author, genre))
+    let dupeBook = false;
+    for(i = 0; i < myLibrary.length; i++) {
+        if(title == myLibrary[i].title) {
+            dupeBook = true;
+        }
+    }
+    
+    if(dupeBook == false) {
+        myLibrary.push(new Book(title, author, genre))
+    }
 }
 
 function addBookToLibraryFromForm() {
