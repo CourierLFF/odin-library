@@ -9,8 +9,9 @@ const formGenre = document.querySelector("#fgenre");
 class Book {
     constructor(title, author, genre) {
         this.title = title;
-        this.author = author
+        this.author = author;
         this.genre = genre;
+        this.isRead = false;
     }
 }
 
@@ -61,15 +62,23 @@ function displayLibrary() {
         const tableTitle = document.createElement('td');
         const tableAuthor = document.createElement('td');
         const tableGenre = document.createElement('td');
+        const readStatus = document.createElement('td');
+        readStatus.setAttribute("onclick", "changeReadStatus()");
         const removeButton = document.createElement('button');
         removeButton.setAttribute("onclick", "removeBook()");
         tableTitle.textContent = myLibrary[i].title;
         tableAuthor.textContent = myLibrary[i].author;
         tableGenre.textContent = myLibrary[i].genre;
+        if(myLibrary[i].isRead == false) {
+            readStatus.textContent = 'NOT READ';
+        } else {
+            readStatus.textContent = 'READ';
+        }
         removeButton.textContent = "REMOVE";
         tableRow.appendChild(tableTitle);
         tableRow.appendChild(tableAuthor);
         tableRow.appendChild(tableGenre);
+        tableRow.appendChild(readStatus);
         tableRow.appendChild(removeButton);
         libraryTable.append(tableRow);
     }
@@ -83,6 +92,20 @@ function removeBook() {
     for(i = 0; i < myLibrary.length; i++) {
         if(removeBookTitle == myLibrary[i].title) {
             myLibrary.splice(i, 1);
+        }
+    }
+    displayLibrary();
+}
+
+function changeReadStatus() {
+    let changeBookTitle = event.target.parentNode.firstChild.textContent;
+    for(i = 0; i < myLibrary.length; i++) {
+        if(changeBookTitle == myLibrary[i].title) {
+            if(myLibrary[i].isRead == false) {
+                myLibrary[i].isRead = true;
+            } else {
+                myLibrary[i].isRead = false;
+            }
         }
     }
     displayLibrary();
