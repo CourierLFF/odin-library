@@ -30,6 +30,18 @@ input {
     padding: 8px;
 }
 
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 48px;
+    font-family: 'Luxurious Script', sans-serif;
+    background-color: rgba(128, 128, 128, 0.4);
+    border-radius: 16px;
+    padding: 16px;
+}
+
 .library-table {
     padding: 16px;
     border-radius: 16px;
