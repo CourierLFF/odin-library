@@ -9,11 +9,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 32px;
     height: 100vh;
-    background-color: darkgray;
+    background-image: url(assets/library.jpg);
+    font-family: 'Roboto', sans-serif;
 }
 
 th,
 td {
     padding: 0px 8px;
+    color: white;
+}
+
+label {
+    color: white;
+}
+
+input {
+    border-radius: 8px;
+    padding: 8px;
 }
